@@ -74,7 +74,7 @@ public class BTT3 {
     }
     public double thanhtien()
     {
-        return dongia*soluong;
+        return dongia*soluong ;
     }
     public double Phivanchuyen()
     {
