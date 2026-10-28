@@ -59,7 +59,7 @@ public class BTT3 {
                     return "Con nhieu";
     }
     public String chonLoaisach(){
-        switch ((loaisach)) {
+        switch (loaisach) {
             case 1:
                 return "Sach giao khoa";
             case 2:
