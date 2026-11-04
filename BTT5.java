@@ -170,7 +170,7 @@ public class BTT5 {
                                 timThay = true;
                             }
                         }
-                        if (!timThay) {
+                        if (timThay==false) {
                             System.out.println("Khong tim thay cuon sach nao co ma: " + maTim);
                         }
                     }
