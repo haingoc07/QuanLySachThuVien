@@ -94,15 +94,22 @@ public class BTT5 {
         }
     }
 
-   //tuần 5 
-    public String Masach() {
+   //tuần 5,6 
+    public String Masach() 
+    {
         return masach;
     }
-    public int Soluong() {
+    public int Soluong() 
+    {
         return soluong;
     }
+    public double Dongia() 
+    {
+        return dongia;
+    }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) 
+    {
         Scanner sc = new Scanner(System.in);
         BTT5[] ds = null; 
         int n = 0;
@@ -111,10 +118,12 @@ public class BTT5 {
         do {
             System.out.println("1. Nhap danh sach n cuon sach");
             System.out.println("2. Hien thi danh sach cac cuon sach");
-            System.out.println("3. Tinh tong so luong va tong gia tri sach ");
+            System.out.println("3. Tinh tong so luong va tong gia tri sach");
             System.out.println("4. Tim kiem sach theo ma");
-            System.out.println("5. Thoat chuong trinh");
-            System.out.print("Moi ban chon chuc nang : ");
+            System.out.println("5. Sap xep danh sach tang dan theo don gia ");
+            System.out.println("6. Xoa sach theo ma ");
+            System.out.println("7. Thoat chuong trinh");
+            System.out.print("Moi ban chon chuc nang (1-7): ");
             chon = sc.nextInt();
             sc.nextLine(); // bỏ phím  Enter tránh lỗi ksi tự trắng 
             switch (chon) {
@@ -123,65 +132,135 @@ public class BTT5 {
                     n = sc.nextInt();
                     sc.nextLine();
                     ds = new BTT5[n];
-                    for (int i = 0; i < n; i++) {
+                    for (int i = 0; i < n; i++) 
+                        {
                         System.out.println("\n Nhap thong tin cuon sach thu " + (i + 1) );
                         ds[i] = new BTT5();
                         ds[i].nhap();
-                    }
+                        }
                     break;
                 case 2:
-                    if (ds == null) {
+                    if (ds == null || n == 0) 
+                        {
                         System.out.println("Chua co danh sach! Vui long chon chuc nang 1 truoc.");
-                    } else {
+                        } 
+                    else 
+                        {
                         System.out.println("\nDANH SACH SACH TRONG THU VIEN ");
-                        for (int i = 0; i < n; i++) {
+                        for (int i = 0; i < n; i++) 
+                            {
                             ds[i].xuat();
+                            }
+                    
                         }
-                    }
                     break;
                 case 3:
-                    if (ds == null) {
+                    if (ds == null || n == 0) 
+                        {
                         System.out.println("Chua co du lieu sach!");
-                    } else {
+                        } 
+                    else 
+                        {
                         int tongSoLuong = 0;
                         double tongGiaTri = 0;
-                        for (int i = 0; i < n; i++) {
-                            if (ds[i].kiemtrahople()) {
+                        for (int i = 0; i < n; i++) 
+                            {
+                            if (ds[i].kiemtrahople()) 
+                                {
                                 tongSoLuong += ds[i].Soluong();
                                 tongGiaTri += ds[i].tongtiennhap();
+                                }
                             }
-                        }
                         System.out.println("\n THONG KE");
                         System.out.println("Tong so luong sach hop le: " + tongSoLuong);
                         System.out.println("Tong gia tri nhap kho gồm phí VC: " + tongGiaTri);
-                    }
+                        }
                     break;
                 case 4:
-                    if (ds == null) {
+                    if (ds == null) 
+                        {
                         System.out.println("Chua co du lieu sach!");
-                    } else {
+                        } 
+                    else 
+                        {
                         System.out.print("Nhap ma sach can tim: ");
                         String maTim = sc.nextLine();
                         boolean timThay = false;//mặt định là sai 
                         System.out.println("\n KET QUA TIM KIEM ");
-                        for (int i = 0; i < n; i++) {
-                            if (ds[i].Masach().equalsIgnoreCase(maTim)) {//so sánh không phân biệt hoa thường
+                        for (int i = 0; i < n; i++) 
+                            {
+                            if (ds[i].Masach().equalsIgnoreCase(maTim))//so sánh không phân biệt hoa thường 
+                                {
                                 ds[i].xuat();
                                 timThay = true;
+                                }
+                        }
+                        if (timThay==false) 
+                            {
+                            System.out.println("Khong tim thay cuon sach nao co ma: " + maTim);
                             }
                         }
-                        if (timThay==false) {
-                            System.out.println("Khong tim thay cuon sach nao co ma: " + maTim);
+                    break;
+                case 5:
+                    if (ds == null || n == 0) 
+                    {
+                        System.out.println("Chua co du lieu de sap xep!");
+                    }
+                    else 
+                        {
+                        for (int i = 0; i < n - 1; i++) 
+                            {
+                            for (int j = i + 1; j < n; j++) 
+                                {
+                                if (ds[i].Dongia() > ds[j].Dongia()) 
+                                    {
+                                    BTT5 temp = ds[i];
+                                    ds[i] = ds[j];
+                                    ds[j] = temp;
+                                    }
+                                }
+                            }
+                        System.out.println("\nDa sap xep danh sach tang dan theo don gia thanh cong!");
+                        }
+                    break;
+                case 6:
+                    if (ds == null || n == 0) {
+                        System.out.println("Chua co du lieu!");
+                    } 
+                    else 
+                        {
+                        System.out.print("Nhap ma sach can xoa: ");
+                        String maXoa = sc.nextLine();
+                        int viTriXoa = -1;//vị trí nằm ngoài kh dính tới mảng lúc đầu 
+                        for (int i = 0; i < n; i++) 
+                            {
+                            if (ds[i].Masach().equalsIgnoreCase(maXoa)) 
+                                {
+                                viTriXoa = i;
+                                break;
+                                }
+                            }
+                        if (viTriXoa == -1) 
+                            {
+                            System.out.println("Khong tim thay sach co ma " + maXoa + " de xoa!");
+                        } else 
+                            {
+                            for (int i = viTriXoa; i < n - 1; i++) 
+                                {
+                                ds[i] = ds[i + 1];
+                                }
+                            n--;
+                            System.out.println(" Da xoa thanh cong cuon sach co ma: " + maXoa);
                         }
                     }
                     break;
-                case 5:
-                    System.out.println("Da thoat chuong trinh. Hen gap lai!");
-                    break;
 
+                case 7:
+                    System.out.println("Da thoat chuong trinh.");
+                    break;
                 default:
-                    System.out.println("Lua chon khong hop le! Vui long chon tu 1 den 5.");
+                    System.out.println("Lua chon khong hop le! Vui long chon tu 1 den 7.");
             }
-        } while (chon != 5);
+        } while (chon != 7);
     }
 }
