@@ -9,12 +9,14 @@ public class Test
         int chon;
         do 
         {
-            System.out.println("\nMENU TUAN 7 - QUAN LY THU VIEN");
+            System.out.println("\nMENU TUAN 8 - QUAN LY THU VIEN");
             System.out.println("1. Them sach");
             System.out.println("2. Hien thi danh sach sach");
             System.out.println("3. Tim sach theo ma");
             System.out.println("4. Xoa sach theo ma");
-            System.out.println("5. Thoat");
+            System.out.println("5. Them nhanh sach bang constructor (tuan 8)");
+            System.out.println("6. Sua nam xuat ban va so luong theo ma (tuan 8)");
+            System.out.println("7. Thoat");
             System.out.print("Moi ban chon chuc nang: ");
             chon = sc.nextInt();
             sc.nextLine();
@@ -86,18 +88,49 @@ public class Test
                     }
                     break;
                 }
-                case 5: 
+                   case 5: 
+                {
+                    Sach sachMau = new Sach("S99", "Lap trinh Java", "Nguyen Van A", 2020, 10);
+                    dsSach.add(sachMau);
+                    System.out.println("Da them sach mau bang constructor!");
+                    break;
+                }
+                  case 6: 
+                {
+                    System.out.print("Nhap ma sach can sua: ");
+                    String maSua = sc.nextLine();
+                    boolean daSua = false;
+                    for (Sach s : dsSach) 
+                    {
+                        if (s.getMaSach().equalsIgnoreCase(maSua)) 
+                        {
+                            System.out.print("Nhap nam xuat ban moi: ");
+                            s.setNamXuatBan(sc.nextInt());
+                            System.out.print("Nhap so luong moi: ");
+                            s.setSoLuong(sc.nextInt());
+                            sc.nextLine();
+                            daSua = true;
+                            break;
+                        }
+                    }
+                    if (daSua == false) 
+                    {
+                        System.out.println("Khong tim thay ma sach " + maSua + " de sua!");
+                    }
+                    break;
+                }
+                case 7: 
                 {
                     System.out.println("Da thoat chuong trinh.");
                     break;
                 }
                 default: 
                 {
-                    System.out.println("Lua chon khong hop le! Vui long chon tu 1 den 5.");
+                    System.out.println("Lua chon khong hop le!");
                     break;
                 }
             }
-        } while (chon != 5);
+        } while (chon != 7);
     }
 }
 
