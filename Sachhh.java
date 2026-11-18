@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class Sach 
+public class Sachhh 
 {
     private String maSach;
     private String tieuDe;
@@ -8,8 +8,8 @@ public class Sach
     private int soLuong;
     private static int currentYear = 2026;
  
-    public Sach() {}
-    public Sach(String maSach, String tieuDe, String tacGia, int namXuatBan, int soLuong) 
+    public Sachhh() {}
+    public Sachhh(String maSach, String tieuDe, String tacGia, int namXuatBan, int soLuong) 
     {
         this.maSach = maSach;
         this.tieuDe = tieuDe;

@@ -5,7 +5,7 @@ public class Test
     public static void main(String[] args) 
     {
         Scanner sc = new Scanner(System.in);
-        ArrayList<Sach> dsSach = new ArrayList<>();
+        ArrayList<Sachhh> dsSach = new ArrayList<>();
         int chon;
         do 
         {
@@ -25,7 +25,7 @@ public class Test
                 case 1: 
                 {
                     // Yeu cau 3
-                    Sach sachMoi = new Sach();
+                    Sachhh sachMoi = new Sachhh();
                     sachMoi.nhap();
                     // Yeu cau 4
                     dsSach.add(sachMoi);
@@ -53,7 +53,7 @@ public class Test
                     System.out.print("Nhap ma sach can tim: ");
                     String maTim = sc.nextLine();
                     boolean timThay = false;
-                    for (Sach s : dsSach) 
+                    for (Sachhh s : dsSach) 
                     {
                         if (s.getMaSach().equalsIgnoreCase(maTim)) 
                         {
@@ -90,7 +90,7 @@ public class Test
                 }
                    case 5: 
                 {
-                    Sach sachMau = new Sach("S99", "Lap trinh Java", "Nguyen Van A", 2020, 10);
+                    Sachhh sachMau = new Sachhh("S99", "Lap trinh Java", "Nguyen Van A", 2020, 10);
                     dsSach.add(sachMau);
                     System.out.println("Da them sach mau bang constructor!");
                     break;
@@ -100,7 +100,7 @@ public class Test
                     System.out.print("Nhap ma sach can sua: ");
                     String maSua = sc.nextLine();
                     boolean daSua = false;
-                    for (Sach s : dsSach) 
+                    for (Sachhh s : dsSach) 
                     {
                         if (s.getMaSach().equalsIgnoreCase(maSua)) 
                         {
